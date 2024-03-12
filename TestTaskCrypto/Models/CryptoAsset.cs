@@ -10,7 +10,7 @@ namespace TestTaskCrypto.Models
     {
         public string Id { get; set; }
         public int Rank { get; set; }
-
+    
         /// <summary>
         /// Most common symbol used to identify this asset on an exchange
         /// </summary>

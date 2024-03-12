@@ -12,11 +12,11 @@ namespace TestTaskCrypto.Services
 {
     public class CoinCapApiService
     {
-        public async Task<IEnumerable<CryptoAsset>?> GetTop10Crypts()
+        public async Task<IEnumerable<CryptoAsset>?> GetTopCrypts(int cryptsAmount)
         {
             using (var httpClient = new HttpClient()) 
             {
-                var apiRequest = "https://api.coincap.io/v2/assets/?limit=10";
+                var apiRequest = $"https://api.coincap.io/v2/assets/?limit={cryptsAmount}";
 
                 var cryptoAssets = await httpClient.GetFromJsonAsync<IEnumerable<CryptoAsset>>(apiRequest);
 

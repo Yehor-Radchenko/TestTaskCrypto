@@ -12,9 +12,12 @@ using TestTaskCrypto.Services;
 
 namespace TestTaskCrypto.ViewModels
 {
-    public class ApplicationViewModel : INotifyPropertyChanged
+    public class ApplicationViewModel : BaseViewModel
     {
+        private const int _mainPageCryptsAmount = 10;
+
         private readonly CoinCapApiService _coinCapApiService;
+
         public IEnumerable<CryptoAsset>? Crypts { get; set; }
 
         public ApplicationViewModel() 
@@ -25,16 +28,9 @@ namespace TestTaskCrypto.ViewModels
 
         private async void InitializeAsync()
         {
-            Crypts = await _coinCapApiService.GetTop10Crypts();
+            Crypts = await _coinCapApiService.GetTopCrypts(_mainPageCryptsAmount);
         }
 
         private RelayCommand loadCommand;
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }
