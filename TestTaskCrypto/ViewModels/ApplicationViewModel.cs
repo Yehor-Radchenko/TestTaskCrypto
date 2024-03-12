@@ -18,17 +18,31 @@ namespace TestTaskCrypto.ViewModels
 
         private readonly CoinCapApiService _coinCapApiService;
 
-        public IEnumerable<CryptoAsset>? Crypts { get; set; }
+        private ObservableCollection<CryptoAsset> _crypts;
+        public ObservableCollection<CryptoAsset> Crypts
+        {
+            get => _crypts;
+            set
+            {
+                _crypts = value;
+                OnPropertyChanged(nameof(Crypts));
+            }
+        }
 
-        public ApplicationViewModel() 
+        public ApplicationViewModel()
         {
             _coinCapApiService = new CoinCapApiService();
+            Crypts = new ObservableCollection<CryptoAsset>(); 
             InitializeAsync();
         }
 
         private async void InitializeAsync()
         {
-            Crypts = await _coinCapApiService.GetTopCrypts(_mainPageCryptsAmount);
+            var crypts = await _coinCapApiService.GetTopCrypts(_mainPageCryptsAmount);
+            foreach (var crypto in crypts)
+            {
+                Crypts.Add(crypto);
+            }
         }
 
         private RelayCommand loadCommand;

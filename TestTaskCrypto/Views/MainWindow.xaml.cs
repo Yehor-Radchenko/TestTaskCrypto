@@ -10,7 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TestTaskCrypto.ViewModels;
 
-namespace TestTaskCrypto
+namespace TestTaskCrypto.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

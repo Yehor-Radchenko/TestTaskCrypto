@@ -56,7 +56,7 @@ namespace TestTaskCrypto.ViewModels
             }
         }
 
-        public int Supply
+        public decimal? Supply
         {
             get { return _cryptoAsset.Supply; }
             set
@@ -66,7 +66,7 @@ namespace TestTaskCrypto.ViewModels
             }
         }
 
-        public int MaxSupply
+        public decimal? MaxSupply
         {
             get { return _cryptoAsset.MaxSupply; }
             set

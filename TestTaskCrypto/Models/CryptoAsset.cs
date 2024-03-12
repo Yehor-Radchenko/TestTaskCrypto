@@ -21,12 +21,12 @@ namespace TestTaskCrypto.Models
         /// <summary>
         /// Available supply for trading
         /// </summary>
-        public int Supply { get; set; }
+        public decimal? Supply { get; set; }
 
         /// <summary>
         /// Total quantity of asset issued
         /// </summary>
-        public int MaxSupply { get; set; }
+        public decimal? MaxSupply { get; set; }
 
         /// <summary>
         /// supply x price
@@ -50,6 +50,8 @@ namespace TestTaskCrypto.Models
         /// Volume Weighted Average Price in the last 24 hours
         /// </summary>
         public decimal Vwap24Hr { get; set; }
+
+        public string Explorer {  get; set; }
     }
 }
 

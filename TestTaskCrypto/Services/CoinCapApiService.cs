@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using System.Windows.Media.Animation;
 using TestTaskCrypto.Models;
+using Newtonsoft.Json;
 
 namespace TestTaskCrypto.Services
 {
@@ -14,13 +13,24 @@ namespace TestTaskCrypto.Services
     {
         public async Task<IEnumerable<CryptoAsset>?> GetTopCrypts(int cryptsAmount)
         {
-            using (var httpClient = new HttpClient()) 
+            using (var httpClient = new HttpClient())
             {
                 var apiRequest = $"https://api.coincap.io/v2/assets/?limit={cryptsAmount}";
 
-                var cryptoAssets = await httpClient.GetFromJsonAsync<IEnumerable<CryptoAsset>>(apiRequest);
+                var response = await httpClient.GetAsync(apiRequest);
 
-                return cryptoAssets;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var cryptoAssetsJson = JsonConvert.DeserializeObject<CryptoAssetJsonModel>(responseContent);
+
+                    return cryptoAssetsJson.Data;
+                }
+                else
+                {
+                    // Handle error response
+                    return null;
+                }
             }
         }
 
@@ -28,13 +38,27 @@ namespace TestTaskCrypto.Services
         {
             using (var httpClient = new HttpClient())
             {
-                //api search by asset id (bitcoin) or symbol (BTC)
                 var apiRequest = $"https://api.coincap.io/v2/assets/?search={searchingValue}";
 
-                var cryptoAssets = await httpClient.GetFromJsonAsync<IEnumerable<CryptoAsset>?>(apiRequest);
+                var response = await httpClient.GetAsync(apiRequest);
 
-                return cryptoAssets;
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var cryptoAssetsJson = System.Text.Json.JsonSerializer.Deserialize<CryptoAssetJsonModel>(responseContent);
+
+                    // Convert CryptoAssetJsonModel objects to CryptoAsset objects
+                   
+                    return cryptoAssetsJson.Data;
+                }
+                else
+                {
+                    // Handle error response
+                    return null;
+                }
             }
         }
+
+       
     }
 }
