@@ -14,8 +14,9 @@
 
     <Grid>
         <ListBox Grid.Column="0" ItemsSource="{Binding Crypts}" Background="#272B2F"
-                 BorderThickness="0"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            BorderThickness="0"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Padding" Value="0"/>
@@ -23,7 +24,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ListBoxItem">
-                                <Border BorderBrush="#BFBFBF" BorderThickness="1" CornerRadius="5" Background="white" Height="62">
+                                <Border x:Name="border" BorderBrush="#BFBFBF" BorderThickness="1" CornerRadius="5" Height="62">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
@@ -36,6 +37,14 @@
                                         </StackPanel>
                                     </Grid>
                                 </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="LightBlue"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter TargetName="border" Property="Background" Value="White"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
@@ -44,4 +53,3 @@
         </ListBox>
     </Grid>
 </UserControl>
-
