@@ -7,12 +7,13 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TestTaskCrypto.Common;
 using TestTaskCrypto.Models;
 using TestTaskCrypto.Services;
 
 namespace TestTaskCrypto.ViewModels
 {
-    public class ApplicationViewModel : BaseViewModel
+    public class HomeViewModel : BaseViewModel
     {
         private const int _mainPageCryptsAmount = 10;
 
@@ -29,7 +30,7 @@ namespace TestTaskCrypto.ViewModels
             }
         }
 
-        public ApplicationViewModel()
+        public HomeViewModel()
         {
             _coinCapApiService = new CoinCapApiService();
             Crypts = new ObservableCollection<CryptoAsset>(); 
@@ -44,7 +45,5 @@ namespace TestTaskCrypto.ViewModels
                 Crypts.Add(crypto);
             }
         }
-
-        private RelayCommand loadCommand;
     }
 }

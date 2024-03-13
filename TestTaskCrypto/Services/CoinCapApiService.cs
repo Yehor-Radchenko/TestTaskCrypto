@@ -47,8 +47,6 @@ namespace TestTaskCrypto.Services
                     var responseContent = await response.Content.ReadAsStringAsync();
                     var cryptoAssetsJson = System.Text.Json.JsonSerializer.Deserialize<CryptoAssetJsonModel>(responseContent);
 
-                    // Convert CryptoAssetJsonModel objects to CryptoAsset objects
-                   
                     return cryptoAssetsJson.Data;
                 }
                 else
@@ -58,7 +56,5 @@ namespace TestTaskCrypto.Services
                 }
             }
         }
-
-       
     }
 }

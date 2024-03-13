@@ -3,27 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestTaskCrypto"
+        xmlns:vm="clr-namespace:TestTaskCrypto.ViewModels"
+        xmlns:Menu="clr-namespace:TestTaskCrypto.Common"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="850"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Background="#212529"
+        WindowStyle="None">
+
+    <Window.DataContext>
+        <vm:NavigationViewModel />
+    </Window.DataContext>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="0.2*" />
-        </Grid.RowDefinitions>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Crypts}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <TextBlock FontSize="18" Text="{Binding Path=Name}" />
-                        <TextBlock Text="{Binding Path=Symbol}" />
-                        <TextBlock Text="{Binding Path=PriceUsd}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+
+        <!-- Navigation menu -->
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Vertical" Background="#272B2F">
+            <Menu:NavigationButton Style="{StaticResource BtnStyle}"
+                                   Command="{Binding HomeCommand}"
+                                   IsChecked="True">
+                <TextBlock Text="Home" Style="{StaticResource Text_Style}" />
+            </Menu:NavigationButton>
+
+            <Menu:NavigationButton Style="{StaticResource BtnStyle}"
+                                   Command="{Binding ConvertCommand}">
+                <TextBlock Text="Convert" Style="{StaticResource Text_Style}" />
+            </Menu:NavigationButton>
+        </StackPanel>
+
+        <!-- Content area -->
+        <ContentControl Grid.Row="1" Grid.Column="1"  Content="{Binding CurrentView}" />
+
+        <!-- Close button -->
+        <Button Grid.Column="1" Content="X"
+                Width="20"
+                Height="20"
+                Margin="5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="CloseApp_Click" />
     </Grid>
 </Window>

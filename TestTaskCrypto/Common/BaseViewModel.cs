@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestTaskCrypto.ViewModels
+namespace TestTaskCrypto.Common
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
@@ -14,8 +14,7 @@ namespace TestTaskCrypto.ViewModels
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
     }
 }
