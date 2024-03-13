@@ -14,8 +14,9 @@
 
     <Grid>
         <ListBox Grid.Column="0" ItemsSource="{Binding Crypts}" Background="#272B2F"
-                 BorderThickness="0"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            BorderThickness="0"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            SelectionChanged="ListBox_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Padding" Value="0"/>

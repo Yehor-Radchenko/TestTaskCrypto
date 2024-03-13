@@ -10,5 +10,9 @@
     <DataTemplate DataType="{x:Type vm:ConvertViewModel}">
         <view:Convert />
     </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:CryptoDetailsViewModel}">
+        <view:CryptoDetails />
+    </DataTemplate>
     
 </ResourceDictionary>

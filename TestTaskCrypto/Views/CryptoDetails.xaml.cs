@@ -17,22 +17,18 @@ using TestTaskCrypto.ViewModels;
 namespace TestTaskCrypto.Views
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for CryptoDetails.xaml
     /// </summary>
-    public partial class Home : UserControl
+    public partial class CryptoDetails : UserControl
     {
-        public Home()
+        public CryptoDetails()
         {
             InitializeComponent();
         }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public CryptoDetails(CryptoDetailsViewModel viewModel)
         {
-            if (sender is ListBox listBox && listBox.SelectedItem != null)
-            {
-                var viewModel = DataContext as HomeViewModel;
-                viewModel?.ShowCryptoDetails(listBox.SelectedItem);
-            }
+            InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }
