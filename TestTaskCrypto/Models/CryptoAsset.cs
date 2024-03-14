@@ -44,14 +44,14 @@ namespace TestTaskCrypto.Models
         /// <summary>
         /// The direction and value change in the last 24 hours
         /// </summary>
-        public decimal СhangePercent24Hr {  get; set; }
+        public decimal ChangePercent24Hr {  get; set; }
 
         /// <summary>
         /// Volume Weighted Average Price in the last 24 hours
         /// </summary>
         public decimal Vwap24Hr { get; set; }
 
-        public string Explorer {  get; set; }
+        public string? Explorer {  get; set; }
     }
 }
 

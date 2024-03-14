@@ -28,7 +28,6 @@ namespace TestTaskCrypto.Services
                 }
                 else
                 {
-                    // Handle error response
                     return null;
                 }
             }
@@ -51,7 +50,6 @@ namespace TestTaskCrypto.Services
                 }
                 else
                 {
-                    // Handle error response
                     return null;
                 }
             }
