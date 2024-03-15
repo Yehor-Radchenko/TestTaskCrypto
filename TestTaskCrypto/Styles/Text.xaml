@@ -2,20 +2,88 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="Text_Style"
-           TargetType="TextBlock">
+        TargetType="TextBlock">
 
-    <Setter Property="FontFamily"
-                Value="/Fonts/#Rubik" />
-    <Setter Property="VerticalAlignment"
-                Value="Center" />
-    <Setter Property="HorizontalAlignment"
-                Value="Left" />
-    <Setter Property="Foreground"
-                Value="#DBDBDB" />
-    <Setter Property="FontSize"
-                Value="18" />
-    <Setter Property="Margin"
-                Value="70,0,0,0" />
+        <Setter Property="FontFamily"
+            Value="/Fonts/#Rubik" />
+        <Setter Property="VerticalAlignment"
+            Value="Center" />
+        <Setter Property="HorizontalAlignment"
+            Value="Left" />
+        <Setter Property="Foreground"
+            Value="#DBDBDB" />
+        <Setter Property="FontSize"
+            Value="18" />
+        <Setter Property="Margin"
+            Value="70,0,0,0" />
+
+    </Style>
+
+    <Style x:Key="ListBoxItemNameText_Style"
+       TargetType="TextBlock">
+
+        <Setter Property="FontFamily"
+            Value="/Fonts/#Rubik" />
+        <Setter Property="VerticalAlignment"
+            Value="Center" />
+        <Setter Property="Foreground"
+            Value="#3E434A" />
+        <Setter Property="FontSize"
+            Value="18" />
+        <Setter Property="HorizontalAlignment"
+            Value="Center" />
+        <Setter Property="FontWeight"
+            Value="SemiBold" />
+        <Setter Property="Margin"
+            Value="5,0,0,0" />
+        
+    </Style>
+
+    <Style x:Key="ListBoxItemDetailsText_Style"
+        TargetType="TextBlock">
+
+        <Setter Property="FontFamily"
+            Value="/Fonts/#Rubik" />
+        <Setter Property="VerticalAlignment"
+            Value="Center" />
+        <Setter Property="Foreground"
+            Value="#3E434A" />
+        <Setter Property="FontWeight"
+            Value="SemiBold" />
+        <Setter Property="Margin"
+            Value="0,5,0,0" />
+
+    </Style>
+
+    <Style x:Key="CryptoDetailsPropertyDataText_Style"
+        TargetType="TextBlock">
+        <Setter Property="FontFamily"
+             Value="/Fonts/#Rubik" />
+        <Setter Property="VerticalAlignment"
+             Value="Center" />
+        <Setter Property="Foreground"
+             Value="#DBDBDB" />
+        <Setter Property="Margin"
+             Value="50,10,0,0" />
+        <Setter Property="FontSize"
+             Value="16" />
+
+    </Style>
+
+    <Style x:Key="CryptoDetailsPropertyNameText_Style"
+        TargetType="TextBlock">
+        <Setter Property="FontFamily"
+            Value="/Fonts/#Rubik" />
+        <Setter Property="VerticalAlignment"
+            Value="Center" />
+        <Setter Property="Foreground"
+            Value="#BEBEBE" />
+        <Setter Property="Margin"
+            Value="25,5,0,0" />
+        <Setter Property="FontSize"
+            Value="14" />
+        <Setter Property="FontWeight"
+            Value="Medium" />
 
     </Style>
 </ResourceDictionary>
