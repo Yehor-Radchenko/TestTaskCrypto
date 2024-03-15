@@ -13,7 +13,19 @@
     </UserControl.DataContext>
 
     <Grid>
-        <ListBox Grid.Column="0" ItemsSource="{Binding Crypts}" Background="#272B2F"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0" Margin="10" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding SearchCryptCommand}" />
+            </TextBox.InputBindings>
+        </TextBox>
+
+
+        <ListBox Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Crypts}" Background="#272B2F"
             BorderThickness="0"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             SelectionChanged="ListBox_SelectionChanged">

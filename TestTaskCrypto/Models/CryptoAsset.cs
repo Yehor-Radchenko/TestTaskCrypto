@@ -31,25 +31,25 @@ namespace TestTaskCrypto.Models
         /// <summary>
         /// supply x price
         /// </summary>
-        public decimal MarketCapUsd { get; set; }
+        public decimal? MarketCapUsd { get; set; }
 
         /// <summary>
         /// Volume-weighted price based on real-time market data, 
         /// translated to USD
         /// </summary>
-        public decimal VolumeUsd24Hr { get; set; }
+        public decimal? VolumeUsd24Hr { get; set; }
 
-        public decimal PriceUsd { get; set; }
+        public decimal? PriceUsd { get; set; }
 
         /// <summary>
         /// The direction and value change in the last 24 hours
         /// </summary>
-        public decimal ChangePercent24Hr {  get; set; }
+        public decimal? ChangePercent24Hr {  get; set; }
 
         /// <summary>
         /// Volume Weighted Average Price in the last 24 hours
         /// </summary>
-        public decimal Vwap24Hr { get; set; }
+        public decimal? Vwap24Hr { get; set; }
 
         public string? Explorer {  get; set; }
     }

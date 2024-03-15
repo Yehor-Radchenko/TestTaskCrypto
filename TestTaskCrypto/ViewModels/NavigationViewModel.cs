@@ -1,5 +1,4 @@
-﻿// NavigationViewModel.cs
-using System;
+﻿using System;
 using System.Windows.Input;
 using TestTaskCrypto.Common;
 using TestTaskCrypto.Models;
