@@ -13,10 +13,24 @@ namespace TestTaskCrypto.ViewModels
     {
         private const int _mainPageCryptsAmount = 10;
         private readonly CoinCapApiService _coinCapApiService;
+        private bool _isSearching;
 
         public ObservableCollection<CryptoAsset> Crypts { get; }
         public ICommand ShowDetailsCommand { get; }
         public ICommand SearchCryptCommand { get; }
+
+        public bool IsSearching
+        {
+            get => _isSearching;
+            set
+            {
+                if (_isSearching != value)
+                {
+                    _isSearching = value;
+                    OnPropertyChanged(nameof(IsSearching));
+                }
+            }
+        }
 
         private string _searchQuery;
         public string SearchQuery
@@ -44,6 +58,7 @@ namespace TestTaskCrypto.ViewModels
 
         private async Task UpdateSearchResultsAsync()
         {
+            IsSearching = true;
             await Application.Current.Dispatcher.InvokeAsync(async () =>
             {
                 if (!string.IsNullOrWhiteSpace(SearchQuery))
@@ -60,16 +75,20 @@ namespace TestTaskCrypto.ViewModels
                     Crypts.Clear();
                     InitializeAsync();
                 }
+                IsSearching = false;
             });
         }
 
         private async void InitializeAsync()
         {
+            IsSearching = true;
             var crypts = await _coinCapApiService.GetTopCrypts(_mainPageCryptsAmount);
+            Crypts.Clear();
             foreach (var crypto in crypts)
             {
                 Crypts.Add(crypto);
             }
+            IsSearching = false;
         }
 
         public void ShowCryptoDetails(object parameter)

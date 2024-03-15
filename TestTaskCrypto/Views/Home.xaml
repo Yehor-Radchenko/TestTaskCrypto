@@ -18,14 +18,27 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0" Margin="10" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}">
-            <TextBox.InputBindings>
-                <KeyBinding Key="Enter" Command="{Binding SearchCryptCommand}" />
-            </TextBox.InputBindings>
+        <TextBox Grid.Row="0" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}"
+         BorderThickness="1" BorderBrush="Black" Padding="5" Margin="5">
+            <TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border BorderBrush="DarkGray"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+                                    <ScrollViewer x:Name="PART_ContentHost"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Style>
         </TextBox>
 
-
-        <ListBox Grid.Column="0" Grid.Row="1"  ItemsSource="{Binding Crypts}" Background="#272B2F"
+        <ListBox Grid.Row="1"  ItemsSource="{Binding Crypts}" Background="#272B2F"
             BorderThickness="0"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             SelectionChanged="ListBox_SelectionChanged">
