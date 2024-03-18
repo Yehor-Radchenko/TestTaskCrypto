@@ -5,8 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestTaskCrypto.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="622"
+             Style="{StaticResource Page_Style}">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Column: Cryptocurrency Selection -->
+        <StackPanel Grid.Column="0" Margin="20">
+            <TextBlock Text="From:" Margin="0,0,0,5" />
+            <ComboBox IsEditable="True" Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" 
+                ItemsSource="{Binding Crypts}" DisplayMemberPath="Name"
+                SelectedItem="{Binding FromCurrency, Mode=TwoWay}" StaysOpenOnEdit="True" SelectionChanged="ComboBox_SelectionChanged"/>
+
+
+            <TextBox Text="{Binding FromAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     TextAlignment="Right"
+                     Margin="0,0,0,10" />
+
+            <TextBlock Text="To:" Margin="0,0,0,5" />
             
+            <ComboBox IsEditable="True" TextSearch.Text="{Binding SearchQuery, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Crypts}" DisplayMemberPath="Name"/>
+
+
+            <TextBox Text="{Binding ToAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     TextAlignment="Right" />
+        </StackPanel>
+
+        <!-- Right Column: Conversion Button -->
+        <StackPanel Grid.Column="1" Margin="20">
+            <Button Content="Convert"
+                    Command="{Binding ConvertCommand}"
+                    HorizontalAlignment="Center"
+                    Width="100"
+                    Margin="0,50,0,0" />
+        </StackPanel>
     </Grid>
 </UserControl>
